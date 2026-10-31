@@ -2,18 +2,16 @@ package entities;
 
 public class PetWash {
 
-    private int water;
-    private int shampoo;
+    private int water = 30;
+    private int shampoo = 10;
     private Pet pet;
-    private boolean clean;
-
+    private boolean clean = true;
 
     public void washPet() {
         if (this.pet == null) {
             System.out.println("Não há nenhum pet para lavar.");
             return;
         }
-
         if (this.shampoo < 2) {
             System.out.println("Não há shampoo suficiente para lavar o pet. Adicione mais shampoo.");
             return;
@@ -22,27 +20,28 @@ public class PetWash {
             System.out.println("Não há água suficiente para lavar o pet. Adicione mais água.");
             return;
         }
-
         this.water -= 10;
         this.shampoo -= 2;
         pet.setClean(true);
         System.out.println("O pet " + pet.getName() + " está limpo!");
     }
 
-    public void addWater(int amount) {
-        if (water == 30) {
+    public void addWater() {
+        if (water >= 30) {
             System.out.println("O tanque de água está cheio.");
             return;
         }
+        System.out.println("Adicionando 2 litros de água ao tanque.");
         this.water += 2;
     }
 
-    public void addShampoo(int amount) {
-        if (shampoo == 10) {
-            System.out.println("O tanque de água está cheio.");
+    public void addShampoo() {
+        if (shampoo >= 10) {
+            System.out.println("O tanque de shampoo está cheio.");
             return;
         }
-        this.water += 2;
+        System.out.println("Adicionando 2 litros de shampoo ao tanque.");
+        this.shampoo += 2;
     }
 
     public int getWater() {
