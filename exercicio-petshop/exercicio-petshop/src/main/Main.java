@@ -36,11 +36,14 @@ public class Main {
                     if (petMachine.hasPet()) {
                         System.out.println("Já há um pet na máquina. Retire o pet antes de colocar outro.");
                     } else {
-                        System.out.print("Digite o nome do pet: ");
-                        String name = sc.nextLine();
-                        Pet pet = new Pet(name);
-                        petMachine.setPet(pet);
-                        System.out.println("Pet " + name + " colocado na máquina.");
+                        String name;
+                        do {
+                            System.out.print("Digite o nome do pet: ");
+                            name = sc.nextLine().trim();
+                        } while (name.isBlank());
+                        if (petMachine.setPet(new Pet(name))) {
+                            System.out.println("Pet " + name + " colocado na máquina.");
+                        }
                     }
                 }
                 case 7 -> {
@@ -67,7 +70,6 @@ public class Main {
     private static int selectOption(Scanner sc) {
         while (true) {
             printMenu();
-            System.out.println("Escolha uma opção (0 a 8): ");
             try {
                 int option = Integer.parseInt(sc.nextLine().trim());
                 if (option >= 0 && option <= 8) {
