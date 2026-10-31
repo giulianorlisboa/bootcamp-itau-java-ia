@@ -1,8 +1,6 @@
 package main;
-
 import entities.Pet;
 import entities.PetWash;
-
 import java.util.Scanner;
 
 
